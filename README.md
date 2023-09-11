@@ -31,8 +31,9 @@ Step 2: Run the docker container
 $ docker run --gpus "device=1" -it  -v /home/username/dexnet:/dexnet nvidia/cuda:11.8.0-devel-ubuntu22.04
 ```
 
-Step 3: Install python 3.10
-Step 4: Install required packages. Note: Update numpy to version 1.24
+Step 3: Install python 3.10 and required packages. Note: Update numpy to version 1.24__
+
+## Run the code
 
 ## Citation
 If you use any part of this code in a publication, please cite [the appropriate Dex-Net publication](https://berkeleyautomation.github.io/gqcnn/index.html#academic-use).
