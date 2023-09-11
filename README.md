@@ -23,19 +23,29 @@ Please see the [docs](https://berkeleyautomation.github.io/gqcnn/) for installat
 ## Installation and Usage of this Modified Package
 Step 1: Get a docker container
 ```
-$ docker pull nvidia/cuda:11.8.0-devel-ubuntu22.04
+docker pull nvidia/cuda:11.8.0-devel-ubuntu22.04
 ```
 
 Step 2: Run the docker container
 ``` 
-$ docker run --gpus "device=1" -it  -v /home/username/dexnet:/dexnet nvidia/cuda:11.8.0-devel-ubuntu22.04
+docker run --gpus "device=1" -it  -v /home/username/dexnet:/dexnet nvidia/cuda:11.8.0-devel-ubuntu22.04
 ```
 
-Step 3: Install python 3.10 and required packages. Note: Update numpy to version 1.24 <br />
+Step 3: Clone this repo
+```
+git clone https://github.com/yueminm/res_nerf_dexnet.git
+```
 
-Step 4: 
+Step 4: Install python 3.10 and required packages. Note: Update numpy to version 1.24 <br />
+
+Step 5: Create a folder named "models" to store the GQCNN-2.0 model downloaded from [Dexterity-Network (Dex-Net)](https://berkeleyautomation.github.io/dex-net/) project page. <br />
+
+Step 6: Create a folder named "data" to store depth maps in .npy format. <br /?
 
 ## Run the code
+```
+ ./scripts/policies/run_dex_net_2.0.sh
+```
 
 ## Citation
 If you use any part of this code in a publication, please cite [the appropriate Dex-Net publication](https://berkeleyautomation.github.io/gqcnn/index.html#academic-use).
