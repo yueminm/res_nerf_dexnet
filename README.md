@@ -1,4 +1,4 @@
-# Modified from Berkeley AUTOLAB's GQCNN Package
+# Modified Version of Berkeley AUTOLAB's GQCNN Package
 <p>
    <a href="https://travis-ci.org/BerkeleyAutomation/gqcnn/">
        <img alt="Build Status" src="https://travis-ci.org/BerkeleyAutomation/gqcnn.svg?branch=master">
@@ -17,8 +17,14 @@
 ## Package Overview
 The gqcnn Python package is for training and analysis of Grasp Quality Convolutional Neural Networks (GQ-CNNs). It is part of the ongoing [Dexterity-Network (Dex-Net)](https://berkeleyautomation.github.io/dex-net/) project created and maintained by the [AUTOLAB](https://autolab.berkeley.edu) at UC Berkeley.
 
-## Installation and Usage
+## Installation and Usage of the Original Package
 Please see the [docs](https://berkeleyautomation.github.io/gqcnn/) for installation and usage instructions.
+
+## Installation and Usage of this Modified Package
+Step 1: 
+```
+$ docker pull nvidia/cuda:11.8.0-devel-ubuntu22.04
+```
 
 ## Citation
 If you use any part of this code in a publication, please cite [the appropriate Dex-Net publication](https://berkeleyautomation.github.io/gqcnn/index.html#academic-use).
