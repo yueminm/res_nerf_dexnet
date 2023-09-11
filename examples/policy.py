@@ -185,7 +185,9 @@ if __name__ == "__main__":
     camera_intr = CameraIntrinsics.load(camera_intr_filename)
 
     # Read images.
-    depth_data = np.load(depth_im_filename)
+    depth_data= np.load(depth_im_filename)
+    print(np.shape(depth_data))
+    # depth_data = depth_data_raw[0, :, :] * 2
     depth_im = DepthImage(depth_data, frame=camera_intr.frame)
     color_im = ColorImage(np.zeros([depth_im.height, depth_im.width,
                                     3]).astype(np.uint8),
@@ -261,7 +263,15 @@ if __name__ == "__main__":
         vis.imshow(rgbd_im.depth,
                    vmin=policy_config["vis"]["vmin"],
                    vmax=policy_config["vis"]["vmax"])
-        vis.grasp(action.grasp, scale=2.5, show_center=False, show_axis=True)
-        vis.title("Planned grasp at depth {0:.3f}m with Q={1:.3f}".format(
-            action.grasp.depth, action.q_value))
-        vis.show()
+        vis.grasp(action.grasp, scale=2.5, show_center=True, show_axis=True)
+        # vis.title("Planned grasp at depth {0:.3f}m with Q={1:.3f}".format(
+        #     action.grasp.depth, action.q_value))
+        
+        vis.show(filename="Output.png")
+        print('Image saved')
+        print('Grasping Center: ', action.grasp.center)
+        print('Grasping Depth: ', action.grasp.depth)
+        print('Grasping Quality: ', action.q_value)
+        print(action)
+        action.save('Output')
+        

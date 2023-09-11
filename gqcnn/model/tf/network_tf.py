@@ -39,7 +39,7 @@ import time
 
 import numpy as np
 import tensorflow as tf
-import tensorflow.contrib.framework as tcf
+# import tensorflow.contrib.framework as tcf
 
 from autolab_core import Logger
 from ...utils import (reduce_shape, read_pose_data, pose_dim,
@@ -340,7 +340,7 @@ class GQCNNTF(object):
             self._weights = GQCNNWeights()
 
             # Read/generate weight/bias variable names.
-            ckpt_vars = tcf.list_variables(ckpt_file)
+            ckpt_vars = tcf.train.list_variables(ckpt_file)
             full_var_names = []
             short_names = []
             for variable, shape in ckpt_vars:
@@ -373,7 +373,7 @@ class GQCNNTF(object):
             self._weights = GQCNNWeights()
 
             # Read/generate weight/bias variable names.
-            ckpt_vars = tcf.list_variables(ckpt_file)
+            ckpt_vars = tcf.train.list_variables(ckpt_file)
             full_var_names = []
             short_names = []
             for variable, shape in ckpt_vars:
