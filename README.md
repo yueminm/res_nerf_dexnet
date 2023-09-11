@@ -1,6 +1,4 @@
-## Note: Python 2.x support has officially been dropped.
-
-# Berkeley AUTOLAB's GQCNN Package
+# Modified from Berkeley AUTOLAB's GQCNN Package
 <p>
    <a href="https://travis-ci.org/BerkeleyAutomation/gqcnn/">
        <img alt="Build Status" src="https://travis-ci.org/BerkeleyAutomation/gqcnn.svg?branch=master">
