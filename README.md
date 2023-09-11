@@ -40,7 +40,7 @@ Step 4: Install python 3.10 and required packages. Note: Update numpy to version
 
 Step 5: Create a folder named "models" to store the GQCNN-2.0 model downloaded from [Dexterity-Network (Dex-Net)](https://berkeleyautomation.github.io/dex-net/) project page. <br />
 
-Step 6: Create a folder named "data" to store depth maps in .npy format. <br /?
+Step 6: Create a folder named "data" to store depth maps in .npy format. <br />
 
 ## Run the code
 ```
