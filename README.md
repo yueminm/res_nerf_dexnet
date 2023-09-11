@@ -21,10 +21,18 @@ The gqcnn Python package is for training and analysis of Grasp Quality Convoluti
 Please see the [docs](https://berkeleyautomation.github.io/gqcnn/) for installation and usage instructions.
 
 ## Installation and Usage of this Modified Package
-Step 1: 
+Step 1: Get a docker container
 ```
 $ docker pull nvidia/cuda:11.8.0-devel-ubuntu22.04
 ```
+
+Step 2: Run the docker container
+``` 
+$ docker run --gpus "device=1" -it  -v /home/username/dexnet:/dexnet nvidia/cuda:11.8.0-devel-ubuntu22.04
+```
+
+Step 3: Install python 3.10
+Step 4: Install required packages. Note: Update numpy to version 1.24
 
 ## Citation
 If you use any part of this code in a publication, please cite [the appropriate Dex-Net publication](https://berkeleyautomation.github.io/gqcnn/index.html#academic-use).
