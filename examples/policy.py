@@ -35,6 +35,7 @@ import argparse
 import json
 import os
 import time
+import sys
 
 import numpy as np
 
@@ -254,24 +255,52 @@ if __name__ == "__main__":
 
     # Query policy.
     policy_start = time.time()
-    action = policy(state)
+    # action = policy(state)
+    action_list, best_action = policy(state)
     logger.info("Planning took %.3f sec" % (time.time() - policy_start))
 
     # Vis final grasp.
+    angle_list = []
+    center_list = []
     if policy_config["vis"]["final_grasp"]:
         vis.figure(size=(10, 10))
+        
         vis.imshow(rgbd_im.depth,
                    vmin=policy_config["vis"]["vmin"],
                    vmax=policy_config["vis"]["vmax"])
-        vis.grasp(action.grasp, scale=2.5, show_center=True, show_axis=True)
-        # vis.title("Planned grasp at depth {0:.3f}m with Q={1:.3f}".format(
-        #     action.grasp.depth, action.q_value))
+        vis.grasp(best_action.grasp, scale=2.5, show_center=True, show_axis=True)
+        vis.show(filename="Output_best.png")
         
-        vis.show(filename="Output.png")
-        print('Image saved')
-        print('Grasping Center: ', action.grasp.center)
-        print('Grasping Depth: ', action.grasp.depth)
-        print('Grasping Quality: ', action.q_value)
-        print(action)
-        action.save('Output')
+        vis.imshow(rgbd_im.depth,
+                   vmin=policy_config["vis"]["vmin"],
+                   vmax=policy_config["vis"]["vmax"])
+        for action in action_list:
+            vis.grasp(action.grasp, scale=2.5, show_center=True, show_axis=True)
+            # vis.title("Planned grasp at depth {0:.3f}m with Q={1:.3f}".format(
+            #     action.grasp.depth, action.q_value))
+            angle_list.append(action.grasp.angle)   
+            center_list.append([action.grasp.center[0], action.grasp.center[1]])     
+        vis.show(filename="Output_all.png")
+        
+        result_best = {}
+        result_best['center'] = [best_action.grasp.center[0], best_action.grasp.center[1]]
+        result_best['angle'] = best_action.grasp.angle
+        # print(result_best)
+        with open('result_best.txt', 'w') as result_best_file:
+            result_best_file.write(json.dumps(result_best))
+        
+        result_all = {}
+        result_all['center'] = center_list
+        result_all['angle'] = angle_list
+        # print(result_all)
+        with open('result_all.txt', 'w') as result_all_file:
+            result_all_file.write(json.dumps(result_all))
+
+        print('Done')
+        # print('Image saved')
+        # print('Grasping Center: ', action.grasp.center[0])
+        # print('Grasping Depth: ', action.grasp.depth)
+        # print('Grasping Quality: ', action.q_value)
+        # print('Grasping Angle: ', action.grasp.angle)
+        # action.save('Output')
         
